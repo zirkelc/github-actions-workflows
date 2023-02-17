@@ -1,0 +1,20 @@
+{
+  "name": "github-actions-workflows",
+  "version": "1.0.0",
+  "description": "Examples of GitHub Actions Workflows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zirkelc/github-actions-workflows.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zirkelc/github-actions-workflows/issues"
+  },
+  "homepage": "https://github.com/zirkelc/github-actions-workflows#readme"
+}
