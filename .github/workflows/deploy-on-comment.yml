@@ -49,7 +49,7 @@ jobs:
             const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
             const gif = 'https://user-images.githubusercontent.com/1703964/253663900-934a457c-0dea-4306-963c-84f3f711d3f9.gif'
             const success = '${{ job.status }}' === 'success';
-            const body = `${name}: ${success ? 'succeeded ✅ : 'failed ❌ <img src="https://user-images.githubusercontent.com/1703964/253663900-934a457c-0dea-4306-963c-84f3f711d3f9.gif" alt="cat-deploy" style="max-width: 20%;">'}\n${url}\n$`<img src="${gif}" alt="Imagen">;
+            const body = `${name}: ${success ? 'succeeded ✅ : 'failed ❌'}\n${url}\n$ ![Imagen](${gif})`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
