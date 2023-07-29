@@ -33,7 +33,7 @@ jobs:
           echo "> ${{ github.event.issue.body }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
-          echo "${{ toJson(github.event) }}" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
           echo "$EOF" >> "$GITHUB_ENV"
 
