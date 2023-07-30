@@ -26,11 +26,12 @@ jobs:
       - uses: actions/checkout@v3  
       - name: Summary
         run: |
+          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "JSON_RESPONSE<<EOF" >> "$GITHUB_ENV"
-          echo '${{ toJson(github.event) }}' >> $GITHUB_ENV
-          echo "EOF" >> "$GITHUB_ENV"
+          echo "<<EOF" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
+          echo "EOF" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
 
 
@@ -43,11 +44,12 @@ jobs:
       - uses: actions/checkout@v3  
       - name: Summary
         run: |
+          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "JSON_RESPONSE<<EOF" >> "$GITHUB_ENV"
-          echo '${{ toJson(github.event) }}' >> $GITHUB_ENV
-          echo "EOF" >> "$GITHUB_ENV"
+          echo "<<EOF" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
+          echo "EOF" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
 
   # This job only runs for pull requests  
@@ -59,11 +61,12 @@ jobs:
       - uses: actions/checkout@v3  
       - name: Summary
         run: |
+          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "JSON_RESPONSE<<EOF" >> "$GITHUB_ENV"
-          echo '${{ toJson(github.event) }}' >> $GITHUB_ENV
-          echo "EOF" >> "$GITHUB_ENV"
+          echo "<<EOF" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
+          echo "EOF" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
 
   # This job only runs for pull request comments  
@@ -75,9 +78,10 @@ jobs:
       - uses: actions/checkout@v3  
       - name: Summary
         run: |
+          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "JSON_RESPONSE<<EOF" >> "$GITHUB_ENV"
-          echo '${{ toJson(github.event) }}' >> $GITHUB_ENV
-          echo "EOF" >> "$GITHUB_ENV"
+          echo "<<EOF" >> $GITHUB_STEP_SUMMARY
+          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
+          echo "EOF" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
