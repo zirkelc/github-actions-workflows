@@ -29,8 +29,8 @@ jobs:
         with:
           script: |
             await core.summary
-              .addHeading(github.event_name)
-              .addCodeBlock(JSON.stringify(github.event), "json")
+              .addHeading(context.event_name)
+              .addCodeBlock(JSON.stringify(context), "json")
               .write()    
       # - name: Summary
       #   run: |
@@ -55,9 +55,9 @@ jobs:
         with:
           script: |
             await core.summary
-              .addHeading(github.event_name)
-              .addCodeBlock(JSON.stringify(github.event), "json")
-              .write()  
+              .addHeading(context.event_name)
+              .addCodeBlock(JSON.stringify(context), "json")
+              .write()    
   # This job only runs for pull requests  
   pull_request:
     name: PR opened
@@ -70,9 +70,9 @@ jobs:
         with:
           script: |
             await core.summary
-              .addHeading(github.event_name)
-              .addCodeBlock(JSON.stringify(github.event), "json")
-              .write()  
+              .addHeading(context.event_name)
+              .addCodeBlock(JSON.stringify(context), "json")
+              .write()    
 
   # This job only runs for pull request comments  
   pull_request_comment:
@@ -86,6 +86,6 @@ jobs:
         with:
           script: |
             await core.summary
-              .addHeading(github.event_name)
-              .addCodeBlock(JSON.stringify(github.event), "json")
-              .write()  
+              .addHeading(context.event_name)
+              .addCodeBlock(JSON.stringify(context), "json")
+              .write()    
