@@ -1,3 +1,3 @@
-function add(a: unknown, b: unknown): number {
+export function add(a: number, b: number): number {
 	return a + b;
 }
