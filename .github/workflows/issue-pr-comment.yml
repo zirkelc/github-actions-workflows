@@ -25,14 +25,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3  
       - name: Summary
-        run: |
-          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "```json" >> $GITHUB_STEP_SUMMARY
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
-          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
-          echo "$EOF" >> $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await core.summary
+              .addHeading(github.event_name)
+              .addCodeBlock(JSON.stringify(github.event), "json")
+              .write()    
+      # - name: Summary
+      #   run: |
+      #     echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+      #     echo "```json" >> $GITHUB_STEP_SUMMARY
+      #     EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+      #     echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
+      #     echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
+      #     echo "$EOF" >> $GITHUB_STEP_SUMMARY
+      #     echo "```" >> $GITHUB_STEP_SUMMARY
 
 
   # This job only runs for issue comments
@@ -43,15 +51,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3  
       - name: Summary
-        run: |
-          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "```json" >> $GITHUB_STEP_SUMMARY
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
-          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
-          echo "$EOF" >> $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
-
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await core.summary
+              .addHeading(github.event_name)
+              .addCodeBlock(JSON.stringify(github.event), "json")
+              .write()  
   # This job only runs for pull requests  
   pull_request:
     name: PR opened
@@ -60,14 +66,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3  
       - name: Summary
-        run: |
-          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "```json" >> $GITHUB_STEP_SUMMARY
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
-          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
-          echo "$EOF" >> $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await core.summary
+              .addHeading(github.event_name)
+              .addCodeBlock(JSON.stringify(github.event), "json")
+              .write()  
 
   # This job only runs for pull request comments  
   pull_request_comment:
@@ -77,11 +82,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3  
       - name: Summary
-        run: |
-          echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "```json" >> $GITHUB_STEP_SUMMARY
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
-          echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
-          echo "$EOF" >> $GITHUB_STEP_SUMMARY
-          echo "```" >> $GITHUB_STEP_SUMMARY
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await core.summary
+              .addHeading(github.event_name)
+              .addCodeBlock(JSON.stringify(github.event), "json")
+              .write()  
