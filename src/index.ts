@@ -1,3 +1,5 @@
-export function add(a: number, b: number): number {
+export function add(a, b): number {
+	console.log('add');
+
 	return a + b;
 }
