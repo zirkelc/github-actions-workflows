@@ -31,7 +31,7 @@ jobs:
             await core.summary
               .addHeading(context.eventName)
               .addBreak()
-              .addCodeBlock(JSON.stringify(context), "json")
+              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
               .write()     
       # - name: Summary
       #   run: |
@@ -58,7 +58,7 @@ jobs:
             await core.summary
               .addHeading(context.eventName)
               .addBreak()
-              .addCodeBlock(JSON.stringify(context), "json")
+              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
               .write()    
 
   # This job only runs for pull requests  
@@ -75,7 +75,7 @@ jobs:
             await core.summary
               .addHeading(context.eventName)
               .addBreak()
-              .addCodeBlock(JSON.stringify(context), "json")
+              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
               .write()    
 
   # This job only runs for pull request comments  
@@ -92,5 +92,5 @@ jobs:
             await core.summary
               .addHeading(context.eventName)
               .addBreak()
-              .addCodeBlock(JSON.stringify(context), "json")
+              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
               .write()    
