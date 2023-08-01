@@ -4,6 +4,8 @@
   "description": "Examples of GitHub Actions Workflows",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/zirkelc/github-actions-workflows/issues"
   },
-  "homepage": "https://github.com/zirkelc/github-actions-workflows#readme"
+  "homepage": "https://github.com/zirkelc/github-actions-workflows#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "typescript": "^5.1.6"
+  }
 }

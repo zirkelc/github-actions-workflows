@@ -1,1 +1,4 @@
-console.log("Test");
+"use strict";
+function add(a, b) {
+    return a + b;
+}

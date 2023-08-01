@@ -23,43 +23,15 @@ jobs:
     if: ${{ github.event_name == 'issues' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
-      - name: Summary
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await core.summary
-              .addHeading(context.eventName)
-              .addBreak()
-              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
-              .write()     
-      # - name: Summary
-      #   run: |
-      #     echo "## ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-      #     echo "```json" >> $GITHUB_STEP_SUMMARY
-      #     EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-      #     echo "<<$EOF" >> $GITHUB_STEP_SUMMARY
-      #     echo '${{ toJson(github.event) }}' >> $GITHUB_STEP_SUMMARY
-      #     echo "$EOF" >> $GITHUB_STEP_SUMMARY
-      #     echo "```" >> $GITHUB_STEP_SUMMARY
-
-
+      - uses: ./.github/actions/event-summary
+      
   # This job only runs for issue comments
   issue_comment:
     name: Issue comment
     if: ${{ github.event_name == 'issue_comment' && !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
-      - name: Summary
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await core.summary
-              .addHeading(context.eventName)
-              .addBreak()
-              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
-              .write()    
+      - uses: ./.github/actions/event-summary
 
   # This job only runs for pull requests  
   pull_request:
@@ -67,16 +39,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
-      - name: Summary
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await core.summary
-              .addHeading(context.eventName)
-              .addBreak()
-              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
-              .write()    
+      - uses: ./.github/actions/event-summary
 
   # This job only runs for pull request comments  
   pull_request_comment:
@@ -84,13 +47,4 @@ jobs:
     if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
-      - name: Summary
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await core.summary
-              .addHeading(context.eventName)
-              .addBreak()
-              .addCodeBlock(JSON.stringify(context, null, 2), 'json')
-              .write()    
+      - uses: ./.github/actions/event-summary

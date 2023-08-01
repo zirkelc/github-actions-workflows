@@ -1,0 +1,14 @@
+name: 'Event Summary'
+description: 'Write a summary of the event to the log'
+runs:
+  using: "composite"
+  steps:
+    - name: Summary
+      uses: actions/github-script@v6
+      with:
+        script: |
+          await core.summary
+            .addHeading(context.eventName)
+            .addBreak()
+            .addCodeBlock(JSON.stringify(context, null, 2), 'json')
+            .write()    
